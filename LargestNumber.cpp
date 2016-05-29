@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include <algorithm>
 
-// comparator to use for sorting
+// comparator to use for vector sorting.
 static bool comparator(int a, int b)
 {
     auto sa = to_string(a);
@@ -33,22 +33,27 @@ string largestNumber(const vector<int> &A)
         return "0";
     }
 
+    // create a copy of the input vecot and work with it
     auto temp(A);
     sort(temp.begin(), temp.end(), comparator);
-    string result = "";
 
+    // generate the output result
+    string result = "";
     for (auto item : temp)
     {
         result += to_string(item);
     }
-
-
     return result;
 }
 
 int main()
 {
+    // test 000
     vector<int> data { 0, 0, 0 };
+    cout << largestNumber(data) << endl;
+
+    // test 3 30 34 5 9
+    data = { 3, 30, 34, 5, 9 };
     cout << largestNumber(data) << endl;
     return 0;
 }
